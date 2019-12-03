@@ -124,3 +124,5 @@ venv.bak/
 # OSX
 .DS_Store
 
+# config
+/orion/core/config/

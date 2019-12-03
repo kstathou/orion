@@ -6,11 +6,10 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  - pip install -e .
+before_script:
+  - mkdir orion/core/config/
+  - echo -e "[postgresdb]\nx=1" > orion/core/config/orion_config.config  # create dummy file with just the config x=1
 # command to run tests
 script:
   - pytest
-branches:
-  only:
-    - master
-    - dev
-   

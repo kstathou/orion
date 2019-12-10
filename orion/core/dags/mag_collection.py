@@ -6,6 +6,7 @@ from orion.packages.utils.batches import split_batches
 from orion.core.operators.mag_parse_task import MagParserOperator
 from orion.core.operators.mag_process_titles_task import ProcessTitlesOperator
 from orion.core.operators.mag_collect_task import MagCollectionOperator
+from orion.core.operators.geocode_task import GeocodingOperator
 from orion.packages.utils.s3_utils import load_from_s3, s3_bucket_obj
 
 default_args = {
@@ -28,6 +29,9 @@ PREFIX = "processed-titles"
 # task 2
 MAG_OUTPUT_BUCKET = "collected-mag-data"
 parallel_tasks = 4
+
+# task 3
+google_key = misctools.get_config("orion_config.config", "google")["google_key"]
 
 with DAG(
     dag_id=DAG_ID, default_args=default_args, schedule_interval=timedelta(days=365)
@@ -61,6 +65,9 @@ with DAG(
         )
 
     parse_mag = MagParserOperator(
-        task_id="parsing_mag", s3_bucket=MAG_OUTPUT_BUCKET, db_config=DB_CONFIG
+        task_id="parse_mag", s3_bucket=MAG_OUTPUT_BUCKET, db_config=DB_CONFIG
     )
-    dummy_task >> process_titles >> batch_task >> parse_mag
+
+    geocode_places = GeocodingOperator(task_id='geocode_places', db_config=DB_CONFIG, subscription_key=google_key)
+    
+    dummy_task >> process_titles >> batch_task >> parse_mag >> geocode_places

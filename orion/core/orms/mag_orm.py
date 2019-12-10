@@ -72,6 +72,7 @@ class Affiliation(Base):
     id = Column(BIGINT, primary_key=True)
     affiliation = Column(TEXT)
     author_affiliation = relationship("AuthorAffiliation")
+    aff_location = relationship("AffiliationLocation")
 
 
 class AuthorAffiliation(Base):
@@ -110,6 +111,26 @@ class PaperFieldsOfStudy(Base):
     )
     paper = relationship("Paper", back_populates="fields_of_study")
     field_of_study = relationship("FieldOfStudy")
+
+
+class AffiliationLocation(Base):
+    __tablename__ = "geocoded_places"
+
+    id = Column(TEXT, primary_key=True, autoincrement=False)
+    affiliation_id = Column(
+        BIGINT, ForeignKey("mag_affiliation.id"), primary_key=True, autoincrement=False
+    )
+    lat = Column(Float)
+    lng = Column(Float)
+    address = Column(TEXT)
+    name = Column(TEXT)
+    types = Column(TEXT)
+    website = Column(TEXT)
+    postal_town = Column(TEXT)
+    administrative_area_level_2 = Column(TEXT)
+    administrative_area_level_1 = Column(TEXT)
+    country = Column(TEXT)
+    geocoded_affiliation = relationship("Affiliation", back_populates="aff_location")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,33 @@
+schema:
+    id:
+        type: integer
+    url:
+        type: string
+        description: Paper URL on bioarxiv.
+    title:
+        type: string
+        description: Paper title.
+    abstract:
+        type: string
+        description: Paper abstract.
+    doi:
+        type: string
+        description: Paper DOI.
+    collection:
+        type: string
+        description: Bioarxiv category of the paper.
+    title_vector:
+        type: {}
+        description: Derived from the tsvector, a PostgreSQL data type used for full text search. It is a sorted list of distinct lexemes, which are words that have been normalized to merge different variants of the same word.
+    abstract_vector:
+        type: {}
+        description: Derived from the tsvector, a PostgreSQL data type used for full text search. It is a sorted list of distinct lexemes, which are words that have been normalized to merge different variants of the same word.
+    last_crawled:
+        type: date
+        description: Date when the paper was last crawled. # YYYY-MM-DD
+    posted:
+        type: date
+        description: Date when the paper was posted on bioarxiv. # YYYY-MM-DD
+    author_vector:
+        type: {}
+        description: Derived from the tsvector, a PostgreSQL data type used for full text search. It is a sorted list of distinct lexemes, which are words that have been normalized to merge different variants of the same word.

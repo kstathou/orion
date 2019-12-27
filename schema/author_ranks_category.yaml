@@ -1,0 +1,18 @@
+schema:
+    id:
+        type: integer
+    author:
+        type: integer
+        description: Unique bioarxiv author ID.
+    category:
+        type: string
+        description: Bioarxiv category.
+    rank:
+        type: integer
+        description: Rank of the author in a particular category.
+    tie:
+        type: boolean
+        description: Shows if there is a tie for a position.
+    downloads:
+        type: integer
+        description: Number of paper downloads of the papers of an author for a particular category.

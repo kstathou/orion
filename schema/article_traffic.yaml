@@ -1,0 +1,17 @@
+schema:
+   id:
+       type: integer
+       description: Event ID.
+   article:
+        type: integer
+        description: Bioarxiv article ID.
+   month:
+        type: integer
+   year:
+        type: integer
+   abstract:
+        type: integer
+        description: Abstract views.
+   pdf:
+        type: integer
+        description: PDF views.

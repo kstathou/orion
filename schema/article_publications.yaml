@@ -1,0 +1,10 @@
+schema:
+    article:
+        type: integer
+        description: Bioarxiv paper ID.
+    doi:
+        type: string
+        description: Paper DOI of the journal where the paper was published.
+    publication:
+        type: string
+        description: Journal name where the paper was published.

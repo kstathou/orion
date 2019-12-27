@@ -1,0 +1,7 @@
+schema:
+    article:
+        type: string
+        description: Unique paper ID. It only contains papers that have been published to journals.
+    date:
+        type: date # YYYY-MM-DD
+        description: Publication date.

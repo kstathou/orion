@@ -1,0 +1,11 @@
+schema:
+    id:
+        type: integer
+    source_date:
+        type: date
+    doi:
+        type: string
+    count:
+        type: integer
+    crawled:
+        type: date

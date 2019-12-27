@@ -1,0 +1,16 @@
+schema:
+    id:
+        type: integer
+        description: Unique author ID on bioarxiv.
+    name:
+        type: string
+        description: Full author name.
+    institution:
+        type: string
+        description: Author affiliation. Lists an author's most recently observed institution.
+    orcid:
+        type: string
+        description: Author ORCID (a nonproprietary alphanumeric code to uniquely identify scientific and other academic authors and contributors).
+    noperiodname:
+        type: string
+        description: Full author name without periods.

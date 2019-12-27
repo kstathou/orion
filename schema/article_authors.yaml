@@ -1,0 +1,12 @@
+schema:
+    id:
+        type: integer
+    article:
+        type: integer
+        description: Bioarxiv paper ID.
+    author:
+        type: integer
+        description: Bioarxiv author ID.
+    institution:
+        type: string
+        description: Author's institutional affiliation as listed on a paper.

@@ -2,12 +2,12 @@ import pytest
 import unittest
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from orion.core.orms.bioarxiv_orm import Base
+from orion.core.orms.mag_orm import Base
 from orion.core.airflow_utils import misctools
 
 
 class TestMag(unittest.TestCase):
-    """Check that the bioarXiv ORM works as expected"""
+    """Check that the MAG ORM works as expected"""
 
     db_config = misctools.get_config("orion_config.config", "postgresdb")["test_uri"]
     engine = create_engine(db_config)

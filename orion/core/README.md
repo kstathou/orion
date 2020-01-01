@@ -29,6 +29,11 @@ GENDER_API_KEY=MY_GENDER_API_KEY
 * **Important**: [`misctools.py`](https://github.com/kstathou/orion/blob/dev/orion/core/airflow_utils/misctools.py) is currently being used to pick up the required parts of the config file. This will probably be replaced in the future by `dotenv`. Thus, the format of the congif file will change too. 
 * The database is actually stored on Amazon RDS. This means that you need an AWS account to access the data and the URI differs from the one above.
 
+## How to setup PostgreSQL ##
+Install PostgreSQL:
+* For macOS users, the fastest way is to download the [Postgres.app](https://postgresapp.com/) and follow the installation instructions. To connect to a database, make sure that the app is running.
+* For all other users, you should be able to find a suitable distribution [here](https://www.postgresql.org/download/).
+
 ## How to connect to the AWS RDS instance from the Command Line ##
 You can connect to the PostgreSQL DB on AWS using IAM Authentication ([official instructions here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.AWSCLI.PostgreSQL.html)):
 1. Generate an IAM Authentication Token. This will generate a very long string that will be stored as an environmental variable.
@@ -54,7 +59,7 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-client = boto3.client('rds', region_name='MY-REGION')
+client = boto3.client('rds', region_name=MY-REGION)
 token = client.generate_db_auth_token(MY-DB-ENDPOINT, 5432, MY-USER-NAME)
 engine = create_engine(sqlalchemy.engine.url.URL('postgres+psycopg2', username=MY-USER-NAME, password=token, host=MY-DB-ENDPOINT, port=5432, database=DBNAME))
 session = sessionmaker(engine)
@@ -63,10 +68,7 @@ s = session()
 
 You can then you the session to query the data.
 
-## How to setup and use a local PostgreSQL DB ##
-Install PostgreSQL:
-* For macOS users, the fastest way is to download the [Postgres.app](https://postgresapp.com/) and follow the installation instructions. To connect to a database, make sure that the app is running.
-* For all other users, you should be able to find a suitable distribution [here](https://www.postgresql.org/download/).
+## How to connect to a local PostgreSQL DB ##
 
 TODO: how to complete setup and use postgresdb.  
 

@@ -36,13 +36,19 @@ Install PostgreSQL:
 
 ## How to connect to the AWS RDS instance from the Command Line ##
 You can connect to the PostgreSQL DB on AWS using IAM Authentication ([official instructions here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.AWSCLI.PostgreSQL.html)):
-1. Generate an IAM Authentication Token. This will generate a very long string that will be stored as an environmental variable.
+1. Install the command line for AWS (preferably in a virtual environment).
+
+``` python
+pip install awscli
+```
+
+2. Generate an IAM Authentication Token. This will generate a very long string that will be stored as an environmental variable.
 
 ``` bash
 export PGPASSWORD="$(aws rds generate-db-auth-token --hostname MY-DB-ENDPOINT --port 5432 --region MY-REGION --username MY-USER-NAME )"
 ```
 
-2. Connect to the DB instance.
+3. Connect to the DB instance.
 
 ``` bash
 psql "host=MY-DB-ENDPOINT port=5432 dbname=MY-DB-NAME user=MY-USER-NAME"
@@ -51,7 +57,7 @@ psql "host=MY-DB-ENDPOINT port=5432 dbname=MY-DB-NAME user=MY-USER-NAME"
 **Note**: You can find the required details on the AWS RDS console.
 
 ## How to connect to the AWS RDS instance using SQLAlchemy ##
-
+Assuming you have already installed the AWS CLI, you can run the following to start a session:
 
 ``` python
 import boto3
@@ -66,7 +72,7 @@ session = sessionmaker(engine)
 s = session()
 ```
 
-You can then you the session to query the data.
+You can then use the session to query the data.
 
 ## How to connect to a local PostgreSQL DB ##
 

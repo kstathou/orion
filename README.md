@@ -1,5 +1,5 @@
 # orion
-[![Build Status](https://travis-ci.org/kstathou/orion.svg?branch=dev)](https://travis-ci.org/kstathou/orion)
+[![Build Status](https://travis-ci.org/kstathou/orion.svg?branch=dev)](https://travis-ci.org/kstathou/orion) [![Total alerts](https://img.shields.io/lgtm/alerts/g/kstathou/orion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kstathou/orion/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/kstathou/orion.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kstathou/orion/context:python)
 
 Public information is fragmented across databases, making it difficult to spot gaps and opportunities in the life sciences research, track emerging topics and find collaborators. The goal of this project is to develop an open-source data collection, enrichment and analysis system that will enable users to identify relevant publications and track progress in the life sciences.
 
